@@ -3,6 +3,8 @@ import Login from "./views/Login";
 import Signup from "./views/Signup";
 import NotFound from "./views/NotFound";
 import LoginLayout from "./components/LoginLayout";
+import NormalLayout from "./components/NormalLayout";
+import Inicio from "./views/Inicio";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +20,17 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element: <Signup />
             },
+        ]
+    },
+
+    {
+        path: '/',
+        element: <NormalLayout />,
+        children: [
+            {
+                path: '/inicio',
+                element: <Inicio />
+            }
         ]
     },
     
