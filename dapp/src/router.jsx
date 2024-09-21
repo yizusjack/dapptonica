@@ -30,6 +30,16 @@ import Login from "./views/Login";
 
 // Define routes
 const routes = [
+
+  /**
+   * Login
+   */
+  {
+    path: "/login",
+    element: <Login />,
+  },
+
+
   // Pages routes
   {
     path: "/about-us",
@@ -52,10 +62,6 @@ const routes = [
     key: "sign-in",
   },
 
-  {
-      path: "/login",
-      element: <Login />,
-  },
 
   // Sections routes
   {
