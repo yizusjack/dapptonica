@@ -27,19 +27,16 @@ import ProgressBars from "./layouts/sections/elements/progress-bars";
 import Toggles from "./layouts/sections/elements/toggles";
 import Typography from "./layouts/sections/elements/typography";
 import Login from "./views/Login";
+import LoginLayout from "./components/LoginLayout";
 
 // Define routes
 const routes = [
 
-  /**
-   * Login
-   */
   {
-    path: "/login",
-    element: <Login />,
-  },
-
-
+    path: '/login',
+    element: <Login />
+  },  
+  
   // Pages routes
   {
     path: "/about-us",
