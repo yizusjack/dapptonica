@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function signup(Request $request) {
-        return response([
-            'message' => 'Las credenciales no coinciden',
+        return response()->json([
+            $request->name,
         ]);
     }
 }
