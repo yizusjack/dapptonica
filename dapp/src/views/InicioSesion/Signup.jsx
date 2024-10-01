@@ -18,7 +18,7 @@ export default function Signup() {
 
   const [errors, setErrors] = useState([]);
   const {user, setUser, setToken} = useStateContext(); //agarra lo que se definio en el contexto
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
 
   const guardar = (ev) => {
@@ -38,9 +38,7 @@ export default function Signup() {
       setUser(data.user)
       setToken(data.token)
       console.log("Who tf do you think I am?");
-      useEffect(() => {
-          navigate("/about-us");
-      }, [navigate]);
+      navigate('/login');
     })
     .catch(err => {
       const response = err.response;
