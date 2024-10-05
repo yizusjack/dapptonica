@@ -8,7 +8,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import axiosClient from '../../axios-client'
 import { useStateContext } from '../../contexts/ContextProvider'
 
-export default function Signup() {
+function Signup() {
 
   //informacion de los campos
   const nameRef = useRef(0);
@@ -17,9 +17,15 @@ export default function Signup() {
   const passwordConfirmationRef = useRef(null);
 
   const [errors, setErrors] = useState([]);
-  const {user, setUser, setToken} = useStateContext(); //agarra lo que se definio en el contexto
+  const {token, setUser, setToken} = useStateContext(); //agarra lo que se definio en el contexto
   const navigate = useNavigate()
 
+  useEffect(() => {
+    if (token) {
+      // Si hay token, redirige
+      navigate('/about-us'); // Reemplaza '/otra-vista' con la ruta a la que quieras redirigir
+    }
+  }, [token, navigate]);
 
   const guardar = (ev) => {
     ev.preventDefault()
@@ -37,8 +43,7 @@ export default function Signup() {
     .then(({data}) => { //las llaves son para solo acceder al data, podria tener otras cosas tambien
       setUser(data.user)
       setToken(data.token)
-      console.log("Who tf do you think I am?");
-      navigate('/login');
+      navigate('/about-us');
     })
     .catch(err => {
       const response = err.response;
@@ -106,3 +111,5 @@ export default function Signup() {
     </LoginLayout>
   )
 }
+
+export default Signup;

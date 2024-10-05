@@ -29,6 +29,8 @@ import Presentation from "./layouts/pages/presentation";
 // Material Kit 2 React routes
 import routes from "./router";
 
+import { ContextProvider } from './contexts/ContextProvider.jsx'
+
 export default function App() {
   const { pathname } = useLocation();
 
@@ -54,11 +56,13 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Routes>
-        {getRoutes(routes)}
-        <Route path="/presentation" element={<Presentation />} />
-        <Route path="*" element={<Navigate to="/presentation" />} />
-      </Routes>
+      <ContextProvider>
+        <Routes>
+          {getRoutes(routes)}
+          <Route path="/presentation" element={<Presentation />} />
+          <Route path="*" element={<Navigate to="/presentation" />} />
+        </Routes>
+      </ContextProvider>
     </ThemeProvider>
   );
 }
