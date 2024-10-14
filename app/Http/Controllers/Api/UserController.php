@@ -41,4 +41,15 @@ class UserController extends Controller
 
         return response (compact('user', 'token'));
     }
+
+    public function logout(Request $request) {
+        $user = User::findOrFail($request->user_id);
+        $user->tokens()->where('name', 'main')->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Éxito',
+            'response' => 'Se cerró sesión correctamente',
+        ])->setStatusCode(200);
+    }
 }
