@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useStateContext } from '../../contexts/ContextProvider'
+import axiosClient from '../../axios-client'
 import MKBox from '../../components/template/MKBox'
 import LoginLayout from '../../components/LoginLayout'
 import MKInput from '../../components/template/MKInput'
 import MKTypography from '../../components/template/MKTypography'
 import MKButton from '../../components/template/MKButton'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
-import axiosClient from '../../axios-client'
-import { useStateContext } from '../../contexts/ContextProvider'
 
 function Signup() {
 
@@ -16,8 +16,13 @@ function Signup() {
   const passwordRef = useRef(null);
   const passwordConfirmationRef = useRef(null);
 
+  //Errores de validación
   const [errors, setErrors] = useState([]);
+
+  //Información de token
   const {token, setUser, setToken} = useStateContext(); //agarra lo que se definio en el contexto
+
+  //Redirecciones
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -37,8 +42,7 @@ function Signup() {
       password_confirmation: passwordConfirmationRef.current.value,
     }
 
-    /*console.log(request);*/
-
+    //hace la petición al back
     axiosClient.post('/signup', request)
     .then(({data}) => { //las llaves son para solo acceder al data, podria tener otras cosas tambien
       setUser(data.user)

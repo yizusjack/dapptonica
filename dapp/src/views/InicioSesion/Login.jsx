@@ -1,27 +1,34 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Link, Navigate, useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useStateContext } from '../../contexts/ContextProvider'
+import axiosClient from '../../axios-client';
 import LoginLayout from '../../components/LoginLayout';
 import MKBox from '../../components/template/MKBox'
 import MKInput from '../../components/template/MKInput'
 import MKTypography from '../../components/template/MKTypography'
 import MKButton from '../../components/template/MKButton'
 import { Switch } from '@mui/material'
-import axiosClient from '../../axios-client';
-import { useStateContext } from '../../contexts/ContextProvider'
+
+
 
 export default function Login() {
   const [rememberMe, setRememberMe] = useState(false);
-
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
+  //Refs para los campos del formularios
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+
+  //Token de autenticación
   const {token, setUser, setToken} = useStateContext();
 
+  //Errores de validación
   const [errors, setErrors] = useState([]);
+
+  //Constante de redirecciones
   const navigate = useNavigate()
 
+  //Redirección
   useEffect(() => {
     if (token) {
       // Si hay token, redirige
@@ -29,16 +36,15 @@ export default function Login() {
     }
   }, [token, navigate]);
 
-  //informacion de los
+  //informacion de los formularios
   const guardar = (ev) => {
     ev.preventDefault()
-    
-
     const request = {
       email: emailRef.current.value,
       password: passwordRef.current.value,
     }
 
+    //realiza la petición al backend
     axiosClient.post('/login', request)
     .then(({data}) => { //las llaves son para solo acceder al data, podria tener otras cosas tambien
       setUser(data.user)
