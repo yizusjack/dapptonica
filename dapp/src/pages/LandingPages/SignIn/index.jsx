@@ -13,10 +13,10 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // react-router-dom components
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -50,9 +50,15 @@ function SignInBasic() {
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
+  const ruta = useLocation().pathname;
+
+  useEffect(() => {
+    document.title = ruta === '/login' ? 'Iniciar sesión' : 'Registro'
+  }, [ruta]);
+
   return (
     <>
-      <DefaultNavbar
+      {/*<DefaultNavbar
         routes={routes}
         action={{
           type: "external",
@@ -62,7 +68,9 @@ function SignInBasic() {
         }}
         transparent
         light
-      />
+      />*/}
+      
+      {/**Fondoooooo */}
       <MKBox
         position="absolute"
         top={0}
@@ -97,9 +105,9 @@ function SignInBasic() {
                 textAlign="center"
               >
                 <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-                  Sign in
+                  { ruta === '/login' ? 'Iniciar sesión' : 'Regístrate'}
                 </MKTypography>
-                <Grid container spacing={3} justifyContent="center" sx={{ mt: 1, mb: 2 }}>
+                {/*<Grid container spacing={3} justifyContent="center" sx={{ mt: 1, mb: 2 }}>
                   <Grid item xs={2}>
                     <MKTypography component={MuiLink} href="#" variant="body1" color="white">
                       <FacebookIcon color="inherit" />
@@ -115,7 +123,7 @@ function SignInBasic() {
                       <GoogleIcon color="inherit" />
                     </MKTypography>
                   </Grid>
-                </Grid>
+                </Grid>*/}
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">

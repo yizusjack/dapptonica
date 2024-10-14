@@ -26,10 +26,21 @@ import Dropdowns from "./layouts/sections/elements/dropdowns";
 import ProgressBars from "./layouts/sections/elements/progress-bars";
 import Toggles from "./layouts/sections/elements/toggles";
 import Typography from "./layouts/sections/elements/typography";
-import Login from "./views/Login";
+import Login from "./views/InicioSesion/Login";
+import Signup from "./views/InicioSesion/Signup";
 
 // Define routes
 const routes = [
+
+  {
+    path: '/login',
+    element: <Login />
+  }, 
+  {
+    path: '/registro',
+    element: <Signup />
+  },  
+  
   // Pages routes
   {
     path: "/about-us",
@@ -52,10 +63,6 @@ const routes = [
     key: "sign-in",
   },
 
-  {
-      path: "/login",
-      element: <Login />,
-  },
 
   // Sections routes
   {
