@@ -7,6 +7,7 @@ import LoginLayout from '../../components/LoginLayout'
 import MKInput from '../../components/template/MKInput'
 import MKTypography from '../../components/template/MKTypography'
 import MKButton from '../../components/template/MKButton'
+import Redirect from '../../contexts/Redirect'
 
 function Signup() {
 
@@ -25,12 +26,12 @@ function Signup() {
   //Redirecciones
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (token) {
-      // Si hay token, redirige
-      navigate('/about-us'); // Reemplaza '/otra-vista' con la ruta a la que quieras redirigir
-    }
-  }, [token, navigate]);
+  // useEffect(() => {
+  //   if (token) {
+  //     // Si hay token, redirige
+  //     navigate('/about-us'); // Reemplaza '/otra-vista' con la ruta a la que quieras redirigir
+  //   }
+  // }, [token, navigate]);
 
   const guardar = (ev) => {
     ev.preventDefault()
@@ -59,6 +60,7 @@ function Signup() {
 
 
   return (
+    <Redirect>
     <LoginLayout>
       <MKBox component="form" role="form" onSubmit={guardar}>
         <MKBox mb={2} fontWeight="light">
@@ -113,6 +115,7 @@ function Signup() {
         </MKBox>
       </MKBox>
     </LoginLayout>
+    </Redirect>
   )
 }
 
