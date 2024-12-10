@@ -57,7 +57,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <ContextProvider>
-        <Routes key={"routes"}>
+        <Routes>
           {getRoutes(routes)}
           <Route path="/presentation" element={<Presentation />} />
           <Route path="*" element={<Navigate to="/presentation" />} />

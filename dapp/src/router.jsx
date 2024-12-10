@@ -36,15 +36,18 @@ const routes = [
 
   {
     path: '/login',
-    element: <Login />
+    element: <Login />,
+    key: 'login'
   }, 
   {
     path: '/registro',
-    element: <Signup />
+    element: <Signup />,
+    key: "signup"
   },
   {
     path: '/prueba',
-    element: <Prueba />
+    element: <Prueba />,
+    key: "prueba"
   }, 
   
   // Pages routes
