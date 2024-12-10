@@ -30,7 +30,7 @@ import Presentation from "./layouts/pages/presentation";
 import routes from "./router";
 
 import { ContextProvider } from './contexts/ContextProvider.jsx'
-
+import './index.css';
 export default function App() {
   const { pathname } = useLocation();
 
@@ -57,7 +57,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <ContextProvider>
-        <Routes>
+        <Routes key={"routes"}>
           {getRoutes(routes)}
           <Route path="/presentation" element={<Presentation />} />
           <Route path="*" element={<Navigate to="/presentation" />} />

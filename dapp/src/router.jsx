@@ -28,6 +28,8 @@ import Toggles from "./layouts/sections/elements/toggles";
 import Typography from "./layouts/sections/elements/typography";
 import Login from "./views/InicioSesion/Login";
 import Signup from "./views/InicioSesion/Signup";
+import { element } from "prop-types";
+import Prueba from "./views/Prueba";
 
 // Define routes
 const routes = [
@@ -39,7 +41,11 @@ const routes = [
   {
     path: '/registro',
     element: <Signup />
-  },  
+  },
+  {
+    path: '/prueba',
+    element: <Prueba />
+  }, 
   
   // Pages routes
   {
